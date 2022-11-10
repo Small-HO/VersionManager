@@ -1,0 +1,46 @@
+import com.small.version.*
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.small.versionmanager'
+    compileSdk Versions.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.small.versionmanager"
+        minSdk Versions.minSdkVersion
+        targetSdk Versions.targetSdkVersion
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation Dependencies.coreKtx
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.layout
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.junit_ext
+    androidTestImplementation Dependencies.espresso_core
+}
